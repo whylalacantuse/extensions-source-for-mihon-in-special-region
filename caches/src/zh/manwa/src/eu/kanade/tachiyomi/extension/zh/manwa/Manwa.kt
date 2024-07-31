@@ -37,8 +37,6 @@ import uy.kohesive.injekt.injectLazy
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
-
-//BAIMANGU
 import android.widget.Toast
 import eu.kanade.tachiyomi.network.interceptor.rateLimitHost
 import eu.kanade.tachiyomi.source.model.Filter
