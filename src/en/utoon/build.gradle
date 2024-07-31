@@ -1,9 +1,0 @@
-ext {
-    extName = 'Utoon'
-    extClass = '.Utoon'
-    themePkg = 'madara'
-    baseUrl = 'https://utoon.net'
-    overrideVersionCode = 0
-}
-
-apply from: "$rootDir/common.gradle"

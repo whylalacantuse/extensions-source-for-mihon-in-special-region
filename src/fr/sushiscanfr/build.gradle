@@ -1,9 +1,0 @@
-ext {
-    extName = 'Sushiscan.fr'
-    extClass = '.SushiScanFR'
-    themePkg = 'mangathemesia'
-    baseUrl = 'https://sushiscan.fr'
-    overrideVersionCode = 2
-}
-
-apply from: "$rootDir/common.gradle"

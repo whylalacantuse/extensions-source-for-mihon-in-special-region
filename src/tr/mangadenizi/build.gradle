@@ -1,7 +1,0 @@
-ext {
-    extName = 'MangaDenizi'
-    extClass = '.MangaDenizi'
-    extVersionCode = 4
-}
-
-apply from: "$rootDir/common.gradle"

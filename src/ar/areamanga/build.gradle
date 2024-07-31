@@ -1,9 +1,0 @@
-ext {
-    extName = 'Area Manga'
-    extClass = '.AreaManga'
-    themePkg = 'mangathemesia'
-    baseUrl = 'https://www.areascans.net'
-    overrideVersionCode = 0
-}
-
-apply from: "$rootDir/common.gradle"

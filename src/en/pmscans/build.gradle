@@ -1,9 +1,0 @@
-ext {
-    extName = 'PMScans'
-    extClass = '.PMScans'
-    themePkg = 'madara'
-    baseUrl = 'https://rackusreads.com'
-    overrideVersionCode = 0
-}
-
-apply from: "$rootDir/common.gradle"

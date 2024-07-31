@@ -1,7 +1,0 @@
-ext {
-    extName = 'Yugen Mangás'
-    extClass = '.YugenMangas'
-    extVersionCode = 40
-}
-
-apply from: "$rootDir/common.gradle"
