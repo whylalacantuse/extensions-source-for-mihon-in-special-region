@@ -49,6 +49,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     override val name: String = "漫蛙"
     override val lang: String = "zh"
     override val supportsLatest: Boolean = true
+    
     //BAIMANGU
     override val baseUrl = preferences.getString(MAINSITE_URL_PREF, MAINSITE_URL_PREF_DEFAULT)!!
     
@@ -248,7 +249,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
 		// ---------------------------------------------------------------------------------------
 
         private const val MAINSITE_URL_PREF = "mainSiteUrlPreference"
-        private const val MAINSITE_URL_PREF_DEFAULT = "https://www.darpou.com/"
+        private const val MAINSITE_URL_PREF_DEFAULT = "https://www.manwa.fun/"
 
         private const val MAINSITE_URL_PREF_TITLE = "主站URL"
         private const val MAINSITE_URL_PREF_SUMMARY = "需要重启软件以生效。\n默认值：$MAINSITE_URL_PREF_DEFAULT"
