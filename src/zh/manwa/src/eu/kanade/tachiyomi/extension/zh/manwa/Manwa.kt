@@ -54,7 +54,15 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     private val preferences: SharedPreferences =
         Injekt.get<Application>().getSharedPreferences("source_$id", 0x0000)
         
-    override val baseUrl = preferences.getString(MAINSITE_URL_PREF, MAINSITE_URL_PREF_DEFAULT)!!
+    // 新方法用于获取 bool 性质的值，用于说明当前参数是否需要改变
+    private fun getBooleanPreference(key: String): Boolean {
+        return preferences.getBoolean(key, preferences.getString(key, "").isNotEmpty())
+    }
+
+    // 新方法用于获取 int 性质的值，用于设置请求参数中的次数限制和周期时间的内存中的设置值等
+    private fun getIntPreference(key: String): Int {
+        return preferences.getInt(key, preferences.getString(key, "").isNotEmpty().takeIf { it }.map { it.toInt() } ?: preferences.getInt("defaultValue$common", 6))
+    }
     
     private val json: Json by injectLazy()
 
@@ -192,24 +200,6 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     override fun imageUrlParse(document: Document): String = throw UnsupportedOperationException()
 
     override fun setupPreferenceScreen(screen: PreferenceScreen) {
-        //BAIMANGU
-		val mainSiteUrlPreference = androidx.preference.EditTextPreference(screen.context).apply {
-            key = MAINSITE_URL_PREF
-            title = MAINSITE_URL_PREF_TITLE
-            summary = MAINSITE_URL_PREF_SUMMARY
-
-            setDefaultValue(MAINSITE_URL_PREF_DEFAULT)
-            setOnPreferenceChangeListener { _, newValue ->
-                try {
-                    val setting = preferences.edit().putString(MAINSITE_URL_PREF, newValue as String).commit()
-                    Toast.makeText(screen.context, TOAST_RESTART, Toast.LENGTH_LONG).show()
-                    setting
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    false
-                }
-            }
-        }
 
 		ListPreference(screen.context).apply {
             key = IMAGE_HOST_KEY
@@ -245,15 +235,6 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
         private val IMAGE_HOST_ENTRY_VALUES = arrayOf("1", "2", "3")
 
         private const val AUTO_CLEAR_COOKIE_KEY = "CLEAR_COOKIE"
-
-		//BAIMANGU
-		// ---------------------------------------------------------------------------------------
-        private const val TOAST_RESTART = "請重新启动tachiyomi"
-        private const val MAINSITE_URL_PREF = "mainSiteUrlPreference"
-        private const val MAINSITE_URL_PREF_DEFAULT = "https://www.manwa.fun/"
-
-        private const val MAINSITE_URL_PREF_TITLE = "主站URL"
-        private const val MAINSITE_URL_PREF_SUMMARY = "需要重启软件以生效。\n默认值：$MAINSITE_URL_PREF_DEFAULT"
 
     }
 }
