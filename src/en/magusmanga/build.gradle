@@ -3,7 +3,7 @@ ext {
     extClass = '.MagusManga'
     themePkg = 'mangathemesia'
     baseUrl = 'https://recipeslik.online'
-    overrideVersionCode = 6
+    overrideVersionCode = 8
 }
 
 apply from: "$rootDir/common.gradle"
